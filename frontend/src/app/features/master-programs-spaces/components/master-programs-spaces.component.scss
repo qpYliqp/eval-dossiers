@@ -1,0 +1,97 @@
+.spaces-page {
+    padding: 0px 32px;
+    background-color: var(--white-smoke);
+    min-height: 100vh;
+}
+
+.subtitle {
+    color: var(--slate-grey);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 150% */
+    margin-top: 8px;
+}
+
+.title {
+    color: var(--black-primary);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // modified to fit 3 cards per row
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // Added for vertical alignment of title and button
+}
+
+.viewing-list-container {
+    margin-top: 48px;
+    padding: 24px;
+    border-radius: 8px;
+    border: 0px solid var(--light-shade);
+    background: var(--white);
+    box-shadow: 0px 0px 0px 0px var(--black-primary),
+        0px 0px 0px 0px var(--black-primary),
+        0px 1px 2px 0px var(--light-dark);
+
+    .examiners-header {
+        margin-bottom: 24px; // Optional spacing if needed
+    }
+}
+.examiners-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.examiners-title {
+    color: var(--black-primary);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    /* 140% */
+}
+
+.examiners-subtitle {
+    color: var(--slate-grey);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    /* 150% */
+}
+
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr); // fallback for medium screens
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; // fallback for small screens
+        column-gap: 8px; // ensured consistency for horizontal spacing
+        row-gap: 16px; // consistent vertical spacing even in mobile view
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cards-section {
+        margin: 2rem;
+    }
+}

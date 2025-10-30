@@ -1,0 +1,67 @@
+<div class="update-data">
+  <!-- LEFT SECTION -->
+  <div class="left-section">
+    <div class="header">
+      <h1 class="title">Candidate Number</h1>
+      <p class="candidate-number">{{ candidateNumber }}</p>
+    </div>
+
+    <div class="body">
+      <h2>Personal Information</h2>
+      <ng-container *ngFor="let item of personalInfo">
+        <app-editable-field 
+          [label]="item.label" 
+          [value]="item.value" 
+          [infoItem]="item"
+          (valueChange)="onFieldValueChanged(item, $event)">
+        </app-editable-field>
+      </ng-container>
+
+      <h2>Academic Results</h2>
+      <ng-container *ngFor="let group of academicGroups">
+        <div class="academic-year-group">
+          <h3 class="academic-year-title">{{ group.year }}</h3>
+          <ng-container *ngFor="let item of group.items">
+            <app-editable-field 
+              [label]="item.label" 
+              [value]="item.value" 
+              [infoItem]="item"
+              (valueChange)="onFieldValueChanged(item, $event)">
+            </app-editable-field>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <h2>Score Results</h2>
+      <ng-container *ngFor="let group of scoreGroups">
+        <div class="score-group">
+          <h3 class="score-category-title">{{ group.category }}</h3>
+          <ng-container *ngFor="let item of group.items">
+            <app-editable-field 
+              [label]="item.label" 
+              [value]="item.value" 
+              [infoItem]="item"
+              (valueChange)="onFieldValueChanged(item, $event)">
+            </app-editable-field>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- RIGHT SECTION -->
+  <div class="right-section">
+
+    <div style="margin-top: 1rem;">
+      <ngx-extended-pdf-viewer 
+        [src]="pdfSrc" 
+        startZoom="page-width"
+        style="display: block; width: 100%; height: 80vh;"
+        (pageChange)="onPageChange($event)"
+        useBrowserLocale="true" 
+        style="display: block; width: 100%; height: 80vh;"
+        >
+      </ngx-extended-pdf-viewer>
+    </div>
+  </div>
+</div>

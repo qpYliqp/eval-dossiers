@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 15px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    height: 500px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.list {
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.title {
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 10px;
+}

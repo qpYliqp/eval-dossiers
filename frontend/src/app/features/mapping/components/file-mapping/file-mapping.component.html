@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      <h1 class="title">Mapping des données</h1>
+      <p class="subtitle">Sélectionner les données que vous voulez associer entre PV et MonMaster</p>
+    </div>
+  </div>
+
+  <!-- File selection UI when no files are selected -->
+  <div *ngIf="!monmasterFileId || !pvFileId" class="file-selection-container">
+    <file-select [masterId]="masterId ?? undefined"
+      (filesSelected)="onFilesSelected($event.monmasterFileId, $event.pvFileId)"></file-select>
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="loading-container">
+    <loading-indicator></loading-indicator>
+    <p>Chargement des données...</p>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="error-container">
+    <error-message [message]="error"></error-message>
+  </div>
+
+  <!-- Mapping UI once files are selected and data is loaded -->
+  <div *ngIf="monmasterFileId && pvFileId && !loading && !error" class="mapping-container">
+    <mapping-list [listType]="MappingListType.MASTER" [mappings]="mappings" [isSelecting]="isSelectingMapping"
+      [title]="'Champs MonMaster'" [columns]="masterData" (selectedRowChange)="selectedMasterRow = $event">
+    </mapping-list>
+
+    <mapping-resolver [isSelecting]="isSelectingMapping" [mappings]="mappings"
+      (toggleSelection)="toggleMappingSelection()" (saveSelection)="saveMapping()"
+      (deleteMapping)="deleteMapping($event)">
+    </mapping-resolver>
+
+    <mapping-list [listType]="MappingListType.PV" [mappings]="mappings" [isSelecting]="isSelectingMapping"
+      [title]="'Champs PV'" [columns]="pvData" (selectedRowChange)="selectedPvRow = $event">
+    </mapping-list>
+  </div>
+
+  <div class="information">
+    <h4>Besoin d'aide ? </h4>
+    <p class="information-text">Pour mapper les champs, sélectionnez un champ de MonMaster et faites-le correspondre
+      avec un champ universitaire équivalent. Utilisez le bouton "Ajouter un Mapping" pour créer une nouvelle
+      correspondance.</p>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+.file-select-container {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.monmaster-status {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 128, 0, 0.1);
+    border-radius: 6px;
+    border-left: 4px solid green;
+}
+
+.monmaster-status.error {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-left-color: red;
+}
+
+.status-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.file-selection {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.file-column {
+    flex: 1;
+    background-color: white;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.file-list li {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.file-list li:hover {
+    background-color: #f0f4f8;
+}
+
+.file-list li.selected {
+    background-color: #e1ebf5;
+    font-weight: bold;
+}
+
+.no-files {
+    color: #888;
+    padding: 10px;
+    font-style: italic;
+}
+
+.map-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--blue-primary, #0077cc);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.map-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

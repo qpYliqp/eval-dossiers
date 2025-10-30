@@ -1,0 +1,48 @@
+.card-info-item {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  width: 40px;
+  height: 40px;
+}
+
+.card-icon {
+  object-fit: contain;
+}
+
+.label-container {
+  flex: 1;
+}
+
+.card-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black-secondary);
+}
+
+.card-label.title {
+  color: var(--dark-blue);
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  /* 150% */
+}
+
+.card-label.label {
+  color: var(--slate-grey);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+}

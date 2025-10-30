@@ -1,0 +1,21 @@
+<button class="large-button" 
+        [disabled]="disabled" 
+        (click)="handleClick()"
+        [ngStyle]="{
+          '--bg': BackgroundColor ? 'var(--' + BackgroundColor + ')' : null,
+          '--color': TextColor ? 'var(--' + TextColor + ')' : null,
+          '--hover-bg': HoverBackgroundColor ? 'var(--' + HoverBackgroundColor + ')' : null,
+          '--border-color': BorderColor ? 'var(--' + BorderColor + ')' : null,
+          '--hover-border': HoverBorderColor ? 'var(--' + HoverBorderColor + ')' : null
+        }">
+  <span class="icon" *ngIf="hasProjectedIcon">
+    <ng-content select="[icon]"></ng-content>
+  </span>
+  <span class="icon" *ngIf="!hasProjectedIcon && iconPath">
+    <img [src]="iconPath" alt="icon" class="icon-img" />
+  </span>
+  <span class="label">
+    <ng-content select="[label]"></ng-content>
+    <span *ngIf="!hasProjectedLabel">{{ label }}</span>
+  </span>
+</button>

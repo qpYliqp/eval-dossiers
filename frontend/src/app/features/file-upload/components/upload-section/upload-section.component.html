@@ -1,0 +1,57 @@
+<div class="drag-drop-container" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onFileDrop($event)">
+    <!-- No file selected state -->
+    <div *ngIf="!selectedFile && !isUploading && !uploadCompleted && !uploadError" class="drag-drop-content">
+      <img src="assets/icons/upload-icon.svg" alt="Upload" class="upload-icon">
+      <p class="drag-drop-text">Glissez-déposez votre fichier ici ou</p>
+      <p class="browse-text" (click)="triggerFileInput()">parcourir vos fichiers</p>
+      <p class="format-text">Format accepté: {{ acceptedFormatsText }}</p>
+    </div>
+  
+    <!-- File selected state -->
+    <div *ngIf="selectedFile && !isUploading && !uploadCompleted && !uploadError" class="file-preview-centered">
+      <div class="file-icon-container">
+        <img [src]="getFileIcon(selectedFile.type)" alt="File Icon" class="file-icon">
+        <button class="remove-file file-remove-corner" (click)="clearSelectedFile()">&times;</button>
+      </div>
+      <p class="file-name">{{ selectedFile.name }}</p>
+      <p class="file-size">{{ selectedFile.size }}</p>
+    </div>
+  
+    <!-- Uploading state with circular progress -->
+    <div *ngIf="isUploading && !uploadCompleted && !uploadError" class="uploading-content">
+      <div class="circular-progress-container">
+        <svg class="circular-progress">
+          <circle class="circular-progress-background" cx="50" cy="50" r="40"></circle>
+          <circle class="circular-progress-bar" cx="50" cy="50" r="40" [style.strokeDashoffset.px]="251.2 - (251.2 * uploadProgress / 100)"></circle>
+        </svg>
+        <div class="progress-percentage">{{ uploadProgress }}%</div>
+      </div>
+      <p class="uploading-text">Uploading...</p>
+    </div>
+  
+    <!-- Upload completed state with green tick -->
+    <div *ngIf="uploadCompleted && !uploadError" class="upload-completed">
+      <div class="checkmark-container">
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"></circle>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+        </svg>
+      </div>
+      <p class="completed-text">Upload Completed</p>
+    </div>
+  
+    <!-- Upload error state with red X -->
+    <div *ngIf="uploadError" class="upload-error">
+      <div class="error-icon-container">
+        <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <line x1="15" y1="15" x2="37" y2="37" stroke="red" stroke-width="5"></line>
+          <line x1="37" y1="15" x2="15" y2="37" stroke="red" stroke-width="5"></line>
+        </svg>
+      </div>
+      <p class="error-text">Upload Failed</p>
+    </div>
+  </div>
+  
+  <!-- Hidden file input -->
+  <input #fileInput type="file" [accept]="fileTypes" style="display: none;" (change)="onFileSelected($event)" />
+  

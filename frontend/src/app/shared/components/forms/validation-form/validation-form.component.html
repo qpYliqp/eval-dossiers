@@ -1,0 +1,22 @@
+    <no-scroll></no-scroll>
+    <div class="popup-mode">
+        <div class="creation-panel">
+            <div class="dynamic-form-header">
+                <p class="title">{{ formHeader }}</p>
+            </div>
+            <div class="panel-actions">
+                <button type="button" class="button-secondary" (click)="cancelForm()">{{cancelLabel}}</button>
+                <button type="button" class="button-primary" (click)="submitForm()">{{submitLabel}}</button>
+
+                <!-- Boutons dynamiques -->
+                <button 
+                    *ngFor="let button of buttons" 
+                    type="button" 
+                    class="button-primary" 
+                    (click)="executeAction(button.action)">
+                    {{ button.label }}
+                </button>
+            </div>
+        </div>
+    </div>  
+

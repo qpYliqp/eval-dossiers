@@ -1,0 +1,64 @@
+.navbar {
+  background-color: #F9FAFB; // changed from var(--white)
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E5E7EB; // added divider
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 30px;
+  margin-right: 10px;
+  fill: #2563EB; // added new logo color
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #111827; // changed title color
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #4B5563; // changed link color
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-menu li a:hover {
+  color: #2563EB; // changed hover color
+}
+
+.active-link {
+  color: #2563EB; // changed active link color
+  font-weight: bold;
+}
+
+.navbar-menu li a.active-link {
+  color: #2563EB;
+  font-weight: bold;
+  position: relative;
+}
+
+.navbar-menu li a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2563EB;
+}

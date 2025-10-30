@@ -1,0 +1,18 @@
+<div class="editable-field-container" [class.editing]="isEditing">
+  <div class="left-side">
+    <label class="editable-field-label">{{ label }}</label>
+    <span *ngIf="!isEditing">{{ value }}</span>
+    <input #editInput *ngIf="isEditing" type="text" [(ngModel)]="tempValue" class="editable-field-input" />
+  </div>
+
+  <div *ngIf="this.infoItem.isEditable" class="right-side">
+    <button *ngIf="!isEditing" (click)="startEditing()" class="icon-button">
+      <img src="assets/icons/modify-icon.svg" alt="Edit icon" />
+    </button>
+
+
+    <button *ngIf="isEditing" (click)="saveChanges()" class="icon-button">
+      <img src="assets/icons/tick.svg" alt="Save icon" />
+    </button>
+  </div>
+</div>

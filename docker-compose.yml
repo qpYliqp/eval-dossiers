@@ -1,0 +1,54 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:4200"
+    environment:
+      - API_URL=http://backend:3000
+    develop:
+      watch:
+        - path: ./frontend/src
+          target: /app/src
+          ignore:
+            - node_modules
+          action: sync
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=dbmonmaster
+      - DB_USER=user
+      - DB_PASSWORD=password
+    develop:
+      watch:
+        - path: ./backend/src
+          target: /app/src
+          ignore:
+            - node_modules
+          action: sync
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dbmonmaster
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./backend/init-sql:/docker-entrypoint-initdb.d
+
+volumes:
+  db_data:
+  uploads_data:

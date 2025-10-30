@@ -1,0 +1,34 @@
+<div class="file-select-container">
+    <h3>Select a PV File to Map {{ masterId ? 'for Master Program #' + masterId : '' }}</h3>
+
+    <!-- MonMaster file status indicator -->
+    <div class="monmaster-status" [class.error]="!monmasterFileId">
+        <span class="status-icon">{{ monmasterFileId ? '✓' : '⚠' }}</span>
+        <span class="status-text">
+            {{ monmasterFileId
+            ? 'MonMaster file detected: ' + (monmasterFileName || 'Unknown file')
+            : 'No MonMaster file found for this Master Program. Please upload one first.'
+            }}
+        </span>
+    </div>
+
+    <!-- Only PV files selection -->
+    <div class="file-selection" *ngIf="monmasterFileId">
+        <div class="file-column">
+            <h4>Select PV File to Map</h4>
+            <div *ngIf="pvFiles.length === 0" class="no-files">
+                No PV files available. Please upload PV files first.
+            </div>
+            <ul class="file-list">
+                <li *ngFor="let file of pvFiles" [class.selected]="selectedPvFile === file.fileId"
+                    (click)="selectPvFile(file.fileId)">
+                    {{ file.fileName }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <button class="map-button" [disabled]="!monmasterFileId || !selectedPvFile" (click)="startMapping()">
+        Start Mapping
+    </button>
+</div>

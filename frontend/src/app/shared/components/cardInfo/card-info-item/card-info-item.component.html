@@ -1,0 +1,11 @@
+<div class="card-info-item">
+  <div class="icon-container" [ngStyle]="{'width': iconSize, 'height': iconSize}">
+    <img *ngIf="iconPath" [src]="iconPath" alt="Icon" class="card-icon"
+      [ngStyle]="{'width': '100%', 'height': '100%', 'fill': iconColor}" />
+  </div>
+  <div class="label-container">
+    <span class="card-label" [ngClass]="variant" [ngStyle]="{'font-size': labelFontSize, 'color': iconColor}">
+      {{ label }}
+    </span>
+  </div>
+</div>

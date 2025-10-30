@@ -1,0 +1,19 @@
+<no-scroll></no-scroll>
+<div class="popup-mode">
+    <div class="container">
+        <div class="header">
+            <h3 class="title">Selection champs mon Master</h3>
+        </div>
+        <div class="row-container scrollable">
+            <button *ngFor="let column of masterColumns" class="row"
+                [ngClass]="getRowClass(column)"
+                (click)="selectRow(column)">
+                <p class="row-name">{{ column.columnName }}</p>
+            </button>
+        </div>
+        <div class="panel-actions">
+            <large-button (click)="cancelSelection()" [label]="'Quitter'" [TextColor]="'white'"  BorderColor="blue-primary"
+        HoverBackgroundColor="blue-secondary" HoverBorderColor="blue-secondary"></large-button>
+        </div>
+    </div>
+</div>

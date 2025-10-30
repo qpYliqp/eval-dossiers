@@ -1,0 +1,10 @@
+<div class="contextual-menu-container">
+    <button #button class="contextual-button" [disabled]="disabled" [ngStyle]="{
+      '--hover-bg': hoverBackgroundColor ? 'var(--' + hoverBackgroundColor + ')' : null,
+      'border-color': borderColor ? 'var(--' + borderColor + ')' : null,
+    }" (click)="toggleMenu($event)">
+        <span class="icon">
+            <img [src]="iconPath" alt="menu" class="icon-img" />
+        </span>
+    </button>
+</div>

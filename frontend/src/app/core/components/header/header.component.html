@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <img src="assets/icons/graduate-icon.svg" alt="MonMasterUB Logo" class="logo">
+    <span class="brand-name">MonMasterUB</span>
+  </div>
+  <ul class="navbar-menu">
+    <li><a routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active-link"
+        (click)="goToSpaces()">Espaces</a></li>
+    <ng-container *ngIf="selectedMasterId">
+      <li><a [routerLink]="['/master', selectedMasterId, 'files']" routerLinkActive="active-link">Fichiers</a></li>
+      <li><a [routerLink]="['/master', selectedMasterId, 'mapping']" routerLinkActive="active-link">Mapping</a></li>
+      <li><a [routerLink]="['/master', selectedMasterId, 'validation']" routerLinkActive="active-link">Validation</a>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

@@ -1,0 +1,168 @@
+.validation-page {
+    padding: 20px;
+    background-color: var(--white-smoke);
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; // Added for vertical alignment of title and button
+        margin-bottom: 20px;
+
+        .title {
+            color: var(--black-primary);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--slate-grey);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            /* 150% */
+            margin-top: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+
+            .panel-button {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .main-content {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        /* Ensure items align at the top */
+
+        .table-section {
+            flex: 1;
+            transition: width 0.3s ease;
+
+            &.with-panel {
+                flex: 0.7;
+            }
+        }
+
+        .panel-container {
+            flex: 0.3;
+            /* Remove fixed height to allow panel to expand */
+            height: auto;
+        }
+    }
+
+    .filter-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: var(--light-shade);
+        border-radius: 4px;
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+
+            .toggle-label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                user-select: none;
+
+                input[type="checkbox"] {
+                    margin-right: 8px;
+                    cursor: pointer;
+                }
+
+                .toggle-text {
+                    font-size: 14px;
+                    color: var(--slate-grey);
+                }
+            }
+        }
+
+        .student-count {
+            font-size: 14px;
+            color: var(--slate-grey);
+            font-weight: 500;
+        }
+    }
+
+    .loading-container,
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--white-smoke);
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin: 24px 0;
+    }
+
+    .error-container {
+        color: var(--error-color);
+    }
+
+    // Remove the coffee animation styles as they are now in the dedicated component
+}
+
+:host ::ng-deep .colored-row-list td[data-column-key^="score_"] {
+    font-weight: 500;
+}
+
+/* Add debug border to help see table structure */
+:host ::ng-deep table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+:host ::ng-deep th,
+:host ::ng-deep td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Style for empty cells to make them visible */
+:host ::ng-deep td:empty::after {
+    content: "-";
+    color: #ccc;
+}
+
+/* Row coloring based on trust levels */
+:host ::ng-deep .high-trust-row {
+    background-color: rgba(76, 175, 80, 0.15);
+    /* Light green background for fully verified */
+}
+
+:host ::ng-deep .medium-trust-row {
+    background-color: rgba(255, 193, 7, 0.15);
+    /* Light amber/orange background for partially verified */
+}
+
+:host ::ng-deep .low-trust-row {
+    background-color: rgba(244, 67, 54, 0.15);
+    /* Light red background for fraud */
+}
+
+/* Hover effect on rows */
+:host ::ng-deep .colored-row-list tr:hover td {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+
+.fixed-height-list {
+    max-height: 60vh!important ; // Adjust the height as needed
+    overflow-y: auto; // Enable vertical scrolling
+    display: block; // Assure que la hauteur est respectée
+  }

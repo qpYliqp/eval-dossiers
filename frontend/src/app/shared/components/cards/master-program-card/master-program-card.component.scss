@@ -1,0 +1,60 @@
+.space-card {
+  border: 0px solid var(--light-shade);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--white);
+  width: 100%;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.00), 0px 0px 0px 0px rgba(0, 0, 0, 0.00), 0px 1px 2px 0px var(--light-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  /* Added for positioning context */
+}
+
+.space-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 20px var(--light-dark);
+}
+
+.header {
+  padding: 16px;
+}
+
+.body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.footer>large-button {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .space-card {
+    margin: 0 16px;
+    width: calc(100% - 32px);
+  }
+
+  .header,
+  .body,
+  .footer {
+    padding: 12px;
+  }
+
+  .body {
+    gap: 0.25rem;
+  }
+}

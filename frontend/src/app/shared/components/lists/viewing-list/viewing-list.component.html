@@ -1,0 +1,25 @@
+<div class="list-container">
+  <div [ngClass]="headerClass">
+    <div *ngFor="let col of columns" class="list-header-item">
+      {{ col.label }}
+    </div>
+    <div *ngIf="hasActions()" class="list-header-item">
+      <p>Actions</p>
+    </div>
+  </div>
+  <div class="list-body">
+    <div *ngFor="let item of entries" [ngClass]="[rowClass, rowClassFunction ? rowClassFunction(item) : '']">
+      <div *ngFor="let col of columns" class="list-item">
+        {{ item.getValues()[col.key] }}
+      </div>
+      <div *ngIf="hasActions()" class="list-item">
+        <button *ngFor="let action of actions" 
+                (click)="executeAction(action, item)"
+                [title]="action.label"
+                class="action-button">
+                <img [src]="action.icon" class="icon">
+      </button>
+      </div>
+    </div>
+  </div>
+</div>

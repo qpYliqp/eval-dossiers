@@ -1,0 +1,88 @@
+<div class="review-panel">
+    <div class="panel-header">
+        <h2>Review pour l'élève</h2>
+        <button class="close-panel" (click)="onClose()">
+            Annuler
+        </button>
+    </div>
+    <div class="panel-content">
+        <!-- Loading state -->
+        <div *ngIf="loading" class="panel-loading">
+            <p>Chargement des rapports...</p>
+        </div>
+
+        <!-- Error state -->
+        <div *ngIf="error" class="panel-error">
+            <p>{{ error }}</p>
+        </div>
+
+        <!-- Reports content -->
+        <div *ngIf="candidate && candidateReports && !loading && !error" class="candidate-reports">
+            <!-- Candidate header -->
+            <div class="candidate-header">
+                <h3>{{ candidate.fullName }}</h3>
+                <div class="candidate-info">
+                    <span class="info-label">Date de naissance:</span>
+                    <span class="info-value">{{ candidate.dateOfBirth }}</span>
+                </div>
+                <div class="candidate-info">
+                    <span class="info-label">ID Candidat:</span>
+                    <span class="info-value">{{ candidateReports.candidateId }}</span>
+                </div>
+            </div>
+
+            <!-- Reports -->
+            <div *ngIf="candidateReports.reportCount > 0; else noReports">
+                <div *ngFor="let report of candidateReports.reports" class="report-card">
+                    <div class="report-header">
+                        <div class="file-info">
+                            <span class="file-label">MonMaster ID:</span>
+                            <span class="file-value">{{ report.monmasterFileId }}</span>
+                            <span class="file-label">PV ID:</span>
+                            <span class="file-value">{{ report.pvFileId }}</span>
+                        </div>
+                        <div class="report-stats">
+                            <div class="similarity">
+                                <span class="stat-label">Similarité:</span>
+                                <span class="stat-value">{{ (parseFloat(report.averageSimilarity) * 100).toFixed(2)
+                                    }}%</span>
+                            </div>
+                            <div class="status-tag" [ngClass]="getStatusClass(report.overallVerificationStatus)">
+                                {{ getStatusLabel(report.overallVerificationStatus) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-fields">
+                        <div *ngFor="let field of report.fields" class="field-comparison">
+                            <div class="field-name">{{ formatFieldName(field.fieldName) }}</div>
+                            <div class="field-values">
+                                <div class="value-pair">
+                                    <span class="value-label">MonMaster:</span>
+                                    <span class="value">{{ field.monmasterValue || '-' }}</span>
+                                </div>
+                                <div class="value-pair">
+                                    <span class="value-label">PV:</span>
+                                    <span class="value">{{ field.pvValue || '-' }}</span>
+                                </div>
+                            </div>
+                            <div class="field-similarity">
+                                <span class="similarity-score">{{ (parseFloat(field.similarityScore) * 100).toFixed(2)
+                                    }}%</span>
+                                <span class="similarity-tag" [ngClass]="getStatusClass(field.verificationStatus)">
+                                    {{ getStatusLabel(field.verificationStatus) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #noReports>
+                <div class="no-reports">
+                    <p>Aucune vérification disponible pour ce candidat.</p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

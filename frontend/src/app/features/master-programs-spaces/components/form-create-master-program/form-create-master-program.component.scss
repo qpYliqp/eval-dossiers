@@ -1,0 +1,17 @@
+.popup-mode {
+  position: fixed;
+  /* Fixe l'élément par rapport à la fenêtre */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light-dark);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.popup-mode {
+  overflow: hidden;
+}

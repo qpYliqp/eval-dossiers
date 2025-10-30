@@ -1,0 +1,74 @@
+.container 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 15px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    height: 500px;
+    min-width: 500px;
+}
+
+.header
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+}
+  
+.title
+{
+    flex: 1;
+}
+  
+
+.row-container 
+{
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.row
+{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #F5F7FA;
+    outline: none;
+    border: none;
+    text-align: start;
+    font-weight: bold;
+}
+
+.selecting .row:hover {
+    background-color: #ffffff9f;
+}
+
+.row.selected {
+    background-color: var(--blue-primary) !important;
+    color: white;
+}
+
+
+.row-name
+{
+    font-weight: bold;
+}
+
+.panel-actions
+{
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding-top: 8px;
+}
+

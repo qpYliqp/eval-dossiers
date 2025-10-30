@@ -1,0 +1,20 @@
+<div class="upload-file" (click)="fileInput.click()">
+    <input 
+      type="file" 
+      #fileInput 
+      (change)="onFileSelected($event)" 
+      [accept]="acceptedFormats" 
+      hidden>
+  
+    <div class="upload-file-icon">
+      <img src="assets/icons/upload-icon.svg" alt="upload-icon" class="icon-img">
+    </div>
+  
+    <div class="upload-file-text">
+      <p class="upload-file-text-title">{{ uploadText }}</p>
+      <p class="upload-file-text-description">Taille maximum : {{ maxFileSize / (1024 * 1024) }}MB</p>
+    </div>
+  
+    <p *ngIf="fileName" class="file-name">{{ fileName }}</p>
+  </div>
+  

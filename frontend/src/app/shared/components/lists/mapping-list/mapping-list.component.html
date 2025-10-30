@@ -1,0 +1,13 @@
+<div class="container scrollable" [ngClass]="{ 'selecting': isSelecting }">
+    <div class="header">
+        <h3 class="title">{{title}}</h3>
+        <input class="search-bar" type="text" placeholder="Rechercher..." />
+    </div>
+
+    <div class="row-container scrollable">
+        <button *ngFor="let column of columns" class="row" [ngClass]="getRowClass(column)" (click)="selectRow(column)">
+            <p class="row-name">{{column.description || column.name}}</p>
+        </button>
+    </div>
+
+</div>

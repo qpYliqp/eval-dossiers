@@ -1,0 +1,39 @@
+.dynamic-form-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #F9FAFB;
+    border-bottom: 2px solid #F9FAFB;
+    max-width: 450px; /* Assure que l'en-tête ne dépasse pas de son conteneur */
+  }
+  
+  .dynamic-form-header .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1c1c1c;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word; /* Permet le retour à la ligne des mots longs */
+    overflow-wrap: break-word;
+    line-height: 1.4; /* Améliore l'espacement des lignes pour la lisibilité */
+  }
+
+  .panel-actions
+  {
+    margin-top: 0px !important;
+  }
+
+
+//   .title::before {
+//     content: "";
+//     display: inline-block;
+//     width: 24px;
+//     height: 24px;
+//     // url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285f4' d='M12 3L1 9l11 6l11-6z'/%3E%3Cpath fill='%234285f4' d='M4 14v4l8 4l8-4v-4l-8 4z'/%3E%3C/svg%3E");
+//     background-size: contain;
+//     margin-right: 12px;
+//   }
+  
+

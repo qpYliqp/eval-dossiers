@@ -1,0 +1,27 @@
+<div class="mid">
+    <search-dropdown [label]="'Université'" [values]="universityList" [placeholder]="'choisissez l\'université'"
+        [ngModel]="selectedUniversity" (ngModelChange)="onUniversityChange($event)"
+        [iconSvg]="'../assets/icons/university-icon.svg'" [required]="hasSelectedFile"></search-dropdown>
+    <search-dropdown [label]="'Année Académique'" [values]="academicYearList"
+        [placeholder]="'choisissez l\'année académique'" [ngModel]="selectedAcademicYear"
+        (ngModelChange)="onAcademicYearChange($event)" [iconSvg]="'../assets/icons/calendar-icon2.svg'"
+        [required]="hasSelectedFile"></search-dropdown>
+    <search-dropdown [label]="'Formation'" [values]="academicUnitList" [placeholder]="'choisissez la formation'"
+        [ngModel]="selectedAcademicUnit" (ngModelChange)="onAcademicUnitChange($event)"
+        [iconSvg]="'../assets/icons/graduate-icon.svg'" [required]="hasSelectedFile"></search-dropdown>
+    <div class="radios">
+        <div class="session-label">Session</div>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" value="session1" name="session" id="session1" [ngModel]="selectedSession"
+                    (ngModelChange)="onSessionChange($event)" checked />
+                <label for="session1">Session 1</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" value="session2" name="session" id="session2" [ngModel]="selectedSession"
+                    (ngModelChange)="onSessionChange($event)" />
+                <label for="session2">Session 2</label>
+            </div>
+        </div>
+    </div>
+</div>

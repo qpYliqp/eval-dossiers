@@ -1,0 +1,27 @@
+<div class="autocomplete-container">
+  <label for="searchDropdownInput" class="autocomplete-label">
+    {{ label }}
+  </label>
+
+  <div class="input-icon-container">
+    <span class="search-icon">
+      <img [src]="iconSvg" alt="icon" />
+    </span>
+
+    <input
+      id="searchDropdownInput"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterValues()"
+      (focus)="showDropdown = true"
+      (blur)="hideDropdown()"
+      [placeholder]="placeholder"
+    />
+  </div>
+
+  <ul *ngIf="showDropdown" class="dropdown">
+    <li *ngFor="let value of filteredValues" (click)="selectValue(value)" repertoire  >
+      {{ value }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+<div class="menu-container">
+    <ul class="menu-options">
+        <li *ngFor="let option of options" class="menu-option" (click)="selectOption(option.id)">
+            <img *ngIf="option.icon" [src]="option.icon" alt="icon" class="option-icon">
+            <span class="option-label">{{ option.label }}</span>
+        </li>
+    </ul>
+</div>

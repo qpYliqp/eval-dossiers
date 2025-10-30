@@ -1,0 +1,67 @@
+<div class="spaces-page">
+    <h1 class="title">Espace du programme de Master</h1>
+    <p class="subtitle">Gérez les espaces et les examinateurs de votre programme de master</p>
+    <large-button 
+        [iconPath]="'../assets/icons/plus-icon.svg'" 
+        [label]="'Ajouter un espace'" 
+        [disabled]="false">
+    </large-button>
+<br>
+<br>
+    <large-button 
+        [label]="'Gérer les examinateurs'" 
+        [disabled]="false">
+    </large-button>
+<br>
+<br>
+    
+    <small-button
+    [iconPath]="'assets/icons/modify-icon.svg'"
+    [disabled]="false"
+    hoverBackgroundColor="#eef7ff"
+    borderColor="#0056b3">
+    </small-button>
+
+    <br><br>
+
+    <small-button
+    [iconPath]="'assets/icons/delete-icon.svg'"
+    [disabled]="false"
+    hoverBackgroundColor="#ffeef0"
+    borderColor="red">
+    </small-button>
+<br>
+<br>   
+<card-info-item-component 
+iconPath="assets/icons/graduate-icon.svg"
+label="test"
+labelFontSize="1rem"
+iconSize="24px"
+iconColor="black">
+</card-info-item-component>
+<br>
+<br>
+<div class="container">
+    <space-card
+    headerLabel="Computer Science and Engineering"
+    [bodyItems]="[
+      {  label: 'School of Computing' },
+      {  label: 'David Auber' },
+      {  label: 'Created: 2024-01-15' },
+      {  label: '4 Examinateurs' }
+    ]"
+  >
+  </space-card>
+  <space-card
+  headerLabel="Space Header"
+  [bodyItems]="[
+    {   label: 'Item 1' },
+    {   label: 'Item 2' },
+    {   label: 'Item 3' },
+    {   label: 'Item 4' }
+  ]"
+>
+</space-card>
+</div>
+
+</div>

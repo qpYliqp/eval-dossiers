@@ -1,0 +1,133 @@
+<div class="file-upload">
+  <div class="white-container">
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+      <div class="tab" [class.active]="activeTab === 'PV'" (click)="switchTab('PV')">
+        Procès-verbal (XML)
+      </div>
+      <div class="tab" [class.active]="activeTab === 'MonMaster'" (click)="switchTab('MonMaster')">
+        MonMaster File (XLSX)
+      </div>
+      <div class="tab" [class.active]="activeTab === 'Documents'" (click)="switchTab('Documents')">
+        Documents (PDF)
+      </div>
+    </div>
+
+    <!-- PV Section -->
+    <div class="tab-content" [class.active]="activeTab === 'PV'">
+      <div class="pv-section">
+        <app-upload-section 
+          [fileTypes]="'.xml'" 
+          [acceptedFormatsText]="'XML'" 
+          [selectedFile]="pvSelectedFile"
+          [isUploading]="isUploading && activeTab === 'PV'" 
+          [uploadProgress]="uploadProgress"
+          [uploadCompleted]="uploadCompleted && activeTab === 'PV'"
+          [uploadError]="uploadError"
+          (fileSelected)="onFileSelected($event, 'PV')"
+          (fileClear)="clearSelectedFile('PV')">
+        </app-upload-section>
+        <app-upload-metadata-section 
+          [universityList]="universityList" 
+          [academicYearList]="academicYearList"
+          [academicUnitList]="academicUnitList" 
+          [hasSelectedFile]="!!pvSelectedFile"
+          [(selectedUniversity)]="pvSelectedUniversity" 
+          [(selectedAcademicYear)]="pvSelectedAcademicYear"
+          [(selectedAcademicUnit)]="pvSelectedAcademicUnit" 
+          [(selectedSession)]="pvSelectedSession">
+        </app-upload-metadata-section>
+        <div class="bottom">
+          <large-button 
+            [iconPath]="'../../../../assets/icons/upload-icon.svg'" 
+            [label]="'Téléchargez'"
+            [disabled]="!canUploadPV() || isUploading" 
+            TextColor="white" 
+            BackgroundColor="blue-primary"
+            BorderColor="blue-primary" 
+            HoverBackgroundColor="blue-secondary" 
+            HoverBorderColor="blue-secondary"
+            (click)="uploadFile('PV')">
+          </large-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MonMaster Section -->
+    <div class="tab-content" [class.active]="activeTab === 'MonMaster'">
+      <div class="MM-section">
+        <app-upload-section 
+          [fileTypes]="'.xlsx'" 
+          [acceptedFormatsText]="'XLSX'" 
+          [selectedFile]="mmSelectedFile"
+          [isUploading]="isUploading && activeTab === 'MonMaster'" 
+          [uploadProgress]="uploadProgress"
+          [uploadCompleted]="uploadCompleted && activeTab === 'MonMaster'"
+          [uploadError]="uploadError"
+          (fileSelected)="onFileSelected($event, 'MonMaster')"
+          (fileClear)="clearSelectedFile('MonMaster')">
+        </app-upload-section>
+        <div class="bottom">
+          <large-button 
+            [iconPath]="'../assets/icons/upload-icon.svg'" 
+            [label]="'Téléchargez'"
+            [disabled]="!canUploadMM() || isUploading" 
+            TextColor="white" 
+            BackgroundColor="blue-primary"
+            BorderColor="blue-primary" 
+            HoverBackgroundColor="blue-secondary" 
+            HoverBorderColor="blue-secondary"
+            (click)="uploadFile('MonMaster')">
+          </large-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Section -->
+    <div class="tab-content" [class.active]="activeTab === 'Documents'">
+      <div class="doc-section">
+        <app-upload-section 
+          [fileTypes]="'.pdf'" 
+          [acceptedFormatsText]="'PDF'" 
+          [selectedFile]="docSelectedFile"
+          [isUploading]="isUploading && activeTab === 'Documents'" 
+          [uploadProgress]="uploadProgress"
+          [uploadCompleted]="uploadCompleted && activeTab === 'Documents'"
+          [uploadError]="uploadError"
+          (fileSelected)="onFileSelected($event, 'Documents')"
+          (fileClear)="clearSelectedFile('Documents')">
+        </app-upload-section>
+        <div class="bottom">
+          <large-button 
+            [iconPath]="'../../../../assets/icons/upload-icon.svg'" 
+            [label]="'Téléchargez'"
+            [disabled]="!canUploadDocuments() || isUploading" 
+            TextColor="white" 
+            BackgroundColor="blue-primary"
+            BorderColor="blue-primary" 
+            HoverBackgroundColor="blue-secondary" 
+            HoverBorderColor="blue-secondary"
+            (click)="uploadFile('Documents')">
+          </large-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Viewing list: Display uploaded file entries -->
+  <div class="white-container">
+    <viewing-list [entries]="filteredFileEntries" [columns]="fileColumns" [actions]="getActionsForFile()"></viewing-list>
+  </div>
+
+  <!-- Validation form for file deletion -->
+  <validation-form *ngIf="isDeletingFile" 
+    [formHeader]="'Êtes-vous sûr de vouloir supprimer ce fichier ?'"
+    (formSubmit)="confirmDelete()" 
+    (formCancel)="cancelDelete()">
+  </validation-form>
+
+  <select-column-master *ngIf="isSelectingMasterColumn"
+  [fileId]="fileIdXLSX" 
+  (cancel)="cancelSelectColumnMaster()">
+</select-column-master>
+</div>

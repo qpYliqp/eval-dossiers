@@ -1,0 +1,10 @@
+
+<div class="popup-mode">
+    <dynamic-form
+    [formConfig]="masterFormConfig"
+    [formHeader]="'Ajouter un examinateur'"
+    (formCancel)="cancelCreation()"
+    (formSubmit)="submitCreation($event)"
+    [formData]="newMaster"
+    ></dynamic-form>
+</div>

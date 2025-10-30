@@ -1,0 +1,83 @@
+<div class="creation-panel">
+    <div class="dynamic-form-header">
+        <p class="title">{{ formHeader }}</p>
+    </div>
+    <form #formRef="ngForm" (ngSubmit)="submitForm()" class="form-content">
+        <div class="form-group" *ngFor="let field of formConfig">
+            <label [for]="field.id">{{ field.label }}</label>
+            <ng-container [ngSwitch]="field.type">
+                <!-- Input Text -->
+                <div *ngSwitchCase="'text'">
+                    <input
+                        [id]="field.id"
+                        [(ngModel)]="formData[field.name]"
+                        [name]="field.name"
+                        type="text"
+                        [required]="field.required"
+                        class="form-input"
+                        [placeholder]="field.placeholder"
+                        #input="ngModel"
+                    />
+                    <div *ngIf="input.invalid && (input.dirty || input.touched || formRef.submitted)" class="error-message">
+                        <span *ngIf="input.errors?.['required']">Ce champ est obligatoire</span>
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div *ngSwitchCase="'textarea'">
+                    <textarea
+                        [id]="field.id"
+                        [(ngModel)]="formData[field.name]"
+                        [name]="field.name"
+                        [required]="field.required"
+                        class="form-input"
+                        #textarea="ngModel"
+                    ></textarea>
+                    <div *ngIf="textarea.invalid && (textarea.dirty || textarea.touched || formRef.submitted)" class="error-message">
+                        <span *ngIf="textarea.errors?.['required']">Ce champ est obligatoire</span>
+                    </div>
+                </div>
+
+                <!-- Date Picker -->
+                <div *ngSwitchCase="'date'">
+                    <input
+                        [id]="field.id"
+                        [(ngModel)]="formData[field.name]"
+                        [name]="field.name"
+                        type="date"
+                        [required]="field.required"
+                        class="form-input date-picker"
+                        #datepicker="ngModel"
+                    />
+                    <div *ngIf="datepicker.invalid && (datepicker.dirty || datepicker.touched || formRef.submitted)" class="error-message">
+                        <span *ngIf="datepicker.errors?.['required']">Ce champ est obligatoire</span>
+                    </div>
+                </div>
+
+                <!-- Select Dropdown -->
+                <div *ngSwitchCase="'select'">
+                    <select
+                        [id]="field.id"
+                        [(ngModel)]="formData[field.name]"
+                        [name]="field.name"
+                        [required]="field.required"
+                        class="form-control"
+                        #dropdown="ngModel"
+                    >
+                        <option value="" disabled selected>Sélectionner une option</option>
+                        <option *ngFor="let option of field.options" [value]="option.value">
+                            {{ option.label }}
+                        </option>
+                    </select>
+                    <div *ngIf="dropdown.invalid && (dropdown.dirty || dropdown.touched || formRef.submitted)" class="error-message">
+                        <span *ngIf="dropdown.errors?.['required']">Ce champ est obligatoire</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="panel-actions">
+            <button type="button" class="button-secondary" (click)="cancelForm()">Annuler</button>
+            <button type="submit" class="button-primary">Confirmer</button>
+        </div>
+    </form>
+</div>

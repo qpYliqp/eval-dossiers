@@ -1,0 +1,66 @@
+<div class="validation-page">
+    <div class="header">
+        <div class="title">
+            <h1 class="title">{{ masterName ? masterName : 'Candidats du master' }}</h1>
+            <p class="subtitle">Validation des candidats</p>
+        </div>
+        <div class="button-group">
+            <large-button [iconPath]="'../assets/icons/search-white.svg'" [label]="'Commencer la validation'"
+                [disabled]="processingValidation" (click)="toggleStarting()" TextColor="white"
+                BackgroundColor="blue-primary" BorderColor="blue-primary" HoverBackgroundColor="blue-secondary"
+                HoverBorderColor="blue-secondary">
+            </large-button>
+        </div>
+    </div>
+
+    <!-- Replace the processing container with the new component -->
+    <app-coffee-animation *ngIf="processingValidation"
+        [message]="'Ce processus peut prendre jusqu\'à quelques minutes...'" [resultMessage]="validationResult">
+    </app-coffee-animation>
+
+    <div *ngIf="loading && !processingValidation" class="loading-container">
+        <p>Chargement des données...</p>
+    </div>
+
+    <div *ngIf="error" class="error-container">
+        <p>{{ error }}</p>
+    </div>
+
+    <div class="main-content" *ngIf="!processingValidation">
+        <!-- Main content section -->
+        <div class="table-section" [ngClass]="{'with-panel': showPanel}">
+            <!-- Add filter toggle and show count of displayed entries -->
+            <div *ngIf="!loading && !error" class="filter-controls">
+                <div class="toggle-container">
+                    <label class="toggle-label">
+                        <input type="checkbox" [checked]="showMatchedOnly" (change)="toggleMatchedOnly()">
+                        <span class="toggle-text">Afficher uniquement les candidats vérifiés</span>
+                    </label>
+                </div>
+                <div class="student-count">
+                    {{ filteredCandidateEntries.length }} candidats affichés
+                </div>
+            </div>
+
+            <!-- Update to use filteredCandidateEntries -->
+            <viewing-list [headerClass]="'classic-fixed-header-list'"  [ngClass]="'fixed-height-list'" *ngIf="!loading && !error" [entries]="filteredCandidateEntries" [columns]="columns"
+                [rowClassFunction]="getRowClass" [rowClass]="'colored-row-list'" [actions]="studentActions">
+            </viewing-list>
+        </div>
+
+        <!-- Replace the panel with the new component -->
+        <div *ngIf="showPanel" class="panel-container">
+            <app-candidate-reports-panel [candidate]="selectedCandidate" [candidateReports]="candidateReports"
+                [loading]="loadingReports" [error]="error" (closePanel)="togglePanel()">
+            </app-candidate-reports-panel>
+        </div>
+    </div>
+
+    <div *ngIf="startingValidation">
+        <validation-form
+            [formHeader]="'Avant de commencer la vérification, assurez vous que les mapping sont corrects.'"
+            [submitLabel]="'Commencer Vérification'" [cancelLabel]="'Annuler'" [buttons]="dynamicButtons"
+            (formSubmit)="loadValidationData()" (formCancel)="toggleStarting()">
+        </validation-form>
+    </div>
+</div>

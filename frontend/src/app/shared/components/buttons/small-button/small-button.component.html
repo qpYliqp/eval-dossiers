@@ -1,0 +1,12 @@
+<button 
+  class="small-button" 
+  [disabled]="disabled" 
+  [ngStyle]="{
+    '--hover-bg': hoverBackgroundColor ? 'var(--' + hoverBackgroundColor + ')' : null,
+    'border-color': borderColor ? 'var(--' + borderColor + ')' : null,
+  }"
+  (click)="handleClick()">
+  <span class="icon">
+    <img [src]="iconPath" alt="icon" class="icon-img" />
+  </span>
+</button>

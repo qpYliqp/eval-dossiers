@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="header">
+        <h3 class="title">Mappings Actuels</h3>
+        <large-button *ngIf="!isSelecting" (click)="toggleSelection.emit()" [iconPath]="'../assets/icons/plus-icon.svg'"
+            [label]="'Ajouter un mapping'" [TextColor]="'white'" BorderColor="blue-primary"
+            HoverBackgroundColor="blue-secondary" HoverBorderColor="blue-secondary"></large-button>
+        <large-button *ngIf="isSelecting" (click)="toggleSelection.emit()" [iconPath]="'../assets/icons/close.svg'"
+            [label]="'Annuler'" [TextColor]="'white'" BorderColor="blue-primary" HoverBackgroundColor="blue-secondary"
+            HoverBorderColor="blue-secondary"></large-button>
+    </div>
+
+    <viewing-list class="list" [entries]="mappingEntries" [columns]="mappingColumns"
+        [actions]="mappingActions"></viewing-list>
+
+    <div class="footer" *ngIf="isSelecting">
+        <large-button (click)="saveSelection.emit()" [label]="'Enregistrer'" [TextColor]="'white'"
+            BorderColor="blue-primary" HoverBackgroundColor="blue-secondary"
+            HoverBorderColor="blue-secondary"></large-button>
+    </div>
+</div>

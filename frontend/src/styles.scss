@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --red-primary: #ff0000;
+  --red-secondary: #ffeef0;
+  --azure: rgba(66, 133, 244, 0.2);
+  --blue-primary: #2563EB;
+  --blue-secondary: #1D4ED8;
+  --blue-tertiary: #eef7ff;
+  --dark-blue: #111827;
+  /* Fixed duplicate # */
+  --green: #00ff00; // Original very bright green
+  --green-primary: #3B9E6C; // New professional green for interactive elements
+  --green-secondary: #2E7D54; // Darker green for hover effects
+  --green-tertiary: #EBFAF0; // Light green background
+  --white: #ffffff;
+  --black: #000000;
+  --black-primary: #111827;
+  --black-secondary: #333333;
+  --grey-primary: #e7e9ec;
+  --grey-secondary: #9CA3AF;
+  --slate-grey: #4B5563;
+  --dark-gray: #555;
+  --light-gray: #aaa;
+  --very-light-grey: #ddd;
+  --light-dark: rgba(0, 0, 0, 0.3);
+  --white-smoke: #F9FAFB;
+  --light-shade: #E5E7EB;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.popup-mode {
+  position: fixed;
+  /* Fixe l'élément par rapport à la fenêtre */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.popup-mode {
+  overflow: hidden;
+}
+
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+/* Personnalisation de la barre de défilement */
+.scrollable::-webkit-scrollbar {
+  width: 12px;
+  /* Largeur de la barre de défilement */
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Couleur de la piste de la scrollbar */
+  border-radius: 10px;
+  /* Coins arrondis pour la piste */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Couleur de la barre de défilement */
+  border-radius: 10px;
+  /* Coins arrondis pour la barre */
+  border: 3px solid #f1f1f1;
+  /* Ajoute un bord autour de la barre de défilement */
+}
+
+/* Ajoute un effet lorsque la souris survole la barre de défilement */
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Couleur de la barre de défilement au survol */
+}

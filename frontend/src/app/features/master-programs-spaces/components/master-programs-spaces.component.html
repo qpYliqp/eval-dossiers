@@ -1,0 +1,58 @@
+<div class="spaces-page">
+  <div class="header">
+    <div class="title">
+      <h1 class="title">Espaces Dédiés</h1>
+      <p class="subtitle">Gérez les espaces de vos programmes de master.</p>
+    </div>
+    <large-button [iconPath]="'../assets/icons/plus-icon.svg'" [label]="'Ajouter un espace'" [disabled]="false"
+      (click)="toggleCreatingMaster()" TextColor="white" BackgroundColor="blue-primary" BorderColor="blue-primary"
+      HoverBackgroundColor="blue-secondary" HoverBorderColor="blue-secondary">
+    </large-button>
+  </div>
+  <div class="cards-section">
+    <div class="container">
+      <!-- Cards fetched from the service -->
+      <ng-container *ngFor="let master of masterPrograms">
+        <app-master-program-card [headerLabel]="master.masterName" [bodyItems]="[
+            { label: master.academicUnit },
+            { label: 'Crée le: ' + master.createdDate },
+            { label: master.examiners.length + ' examinateurs' }
+          ]" (modification)="onRequestModificationMaster(master)" (delete)="onRequestDeleteMaster(master.masterId)"
+          (onClick)="toggleViewingList()" (fileSystemSelected)="navigateToFileSystem(master.masterId)"
+          (mappingSystemSelected)="navigateToMappingSystem(master.masterId)"
+          (dataVerificationSelected)="navigateToDataVerification(master.masterId)">
+        </app-master-program-card>
+      </ng-container>
+    </div>
+  </div>
+  <div *ngIf="isViewingListVisible" class="viewing-list-container">
+    <div class="examiners-header">
+      <div class="left-section">
+        <h2 class="examiners-title">Examiners Management</h2>
+        <p class="examiners-subtitle">Gérez les examinateurs pour le Master Informatique</p>
+      </div>
+      <div class="right-section">
+        <large-button [iconPath]="'../assets/icons/plus-icon.svg'" [label]="'Ajouter un examinateur'" [disabled]="false"
+          (click)="toggleAddingExaminer()" TextColor="white" BackgroundColor="blue-primary" BorderColor="blue-primary"
+          HoverBackgroundColor="blue-secondary" HoverBorderColor="blue-secondary">
+        </large-button>
+      </div>
+    </div>
+    <viewing-list [entries]="userEntries" [actions]="userActions" [columns]="userColumns">
+    </viewing-list>
+  </div>
+  <form-create-master-program *ngIf="isCreatingMaster" (formCancel)="toggleCreatingMaster()"
+    (formSubmit)="onMasterCreated($event)"></form-create-master-program>
+
+  <form-create-master-program *ngIf="isModifyingMaster" (formCancel)="cancelModification()"
+    (formSubmit)="confirmModification($event)" [masterToModify]="masterDtoToModify"></form-create-master-program>
+
+  <form-add-examiner *ngIf="isAddingExaminer" (formCancel)="toggleAddingExaminer()"
+    (formConfirm)="onExaminerAdded()"></form-add-examiner>
+
+  <validation-form *ngIf="isDeletingMaster" [formHeader]="'Êtes-vous sûr de vouloir supprimer ce programme de Master ?'"
+    (formSubmit)="confirmDelete()" (formCancel)="cancelDelete()">
+  </validation-form>
+
+
+</div>

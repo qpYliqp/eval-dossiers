@@ -1,0 +1,151 @@
+.update-data {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  height: calc(99vh - 80px);
+
+  .left-section {
+    overflow-y: auto;
+    width: 40%;
+
+  }
+
+  .left-section {
+    width: 40%;
+    padding: 5px;
+
+    .header {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--very-light-grey);
+      border-radius: 6px;
+      padding: 15px;
+      background-color: var(--blue-tertiary);
+
+      .title {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--blue-primary);
+      }
+
+      .candidate-number {
+        margin: 0.3rem 0 0 0;
+        font-size: 1rem;
+        color: var(--light-gray);
+      }
+    }
+
+    .body {
+      background-color: var(--white);
+      border: 1px solid var(--very-light-grey);
+      border-radius: 6px;
+      padding: 1rem;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+
+      app-editable-field {
+        display: block;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        border-radius: 4px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .academic-year-group {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: var(--white-smoke);
+        border-radius: 6px;
+        border-left: 4px solid var(--blue-primary);
+
+        .academic-year-title {
+          margin-top: 0;
+          margin-bottom: 1rem;
+          color: var(--blue-primary);
+          font-size: 1.1rem;
+          font-weight: 600;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .score-group {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: var(--white-smoke);
+        border-radius: 6px;
+        border-left: 4px solid var(--green-primary); // Using theme variable
+
+        .score-category-title {
+          margin-top: 0;
+          margin-bottom: 1rem;
+          color: var(--green-primary); // Using theme variable
+          font-size: 1.1rem;
+          font-weight: 600;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        app-editable-field {
+          background-color: rgba(255, 255, 255, 0.7);
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+  }
+
+  .right-section {
+    flex: 1;
+    background-color: var(--white-smoke);
+    border: 1px solid var(--very-light-grey);
+    border-radius: 6px;
+    padding: 1rem;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--white);
+      border: 1px solid var(--very-light-grey);
+      border-radius: 6px;
+      padding: 1rem;
+
+      .left {
+        display: flex;
+        gap: 1rem;
+      }
+
+      button {
+        background-color: var(--white);
+        border: none;
+        cursor: pointer;
+      }
+
+      .right {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
+    pdf-viewer {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}

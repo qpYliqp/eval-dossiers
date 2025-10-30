@@ -1,0 +1,26 @@
+<div class="space-card">
+  <div class="header">
+    <card-info-item [iconPath]="headerIconPath" [label]="headerLabel" variant="title">
+    </card-info-item>
+  </div>
+  <div class="body">
+    <ng-container *ngFor="let item of bodyItems; let i = index">
+      <card-info-item [iconPath]="bodyIconPath[i]" [label]="item.label" labelFontSize="1rem" iconSize="14px"
+        iconColor="#666" variant="label">
+      </card-info-item>
+    </ng-container>
+  </div>
+  <div class="footer">
+    <div class="buttons">
+      <small-button [iconPath]="modifyIconPath" hoverBackgroundColor="blue-tertiary" borderColor="blue-primary"
+        (click)="onModifyClick($event)">
+      </small-button>
+      <small-button [iconPath]="deleteIconPath" hoverBackgroundColor="red-secondary" borderColor="red-primary"
+        (click)="onDeleteClick($event)">
+      </small-button>
+      <contextual-menu-button [iconPath]="menuIconPath" [options]="menuOptions" hoverBackgroundColor="grey-primary"
+        borderColor="grey-secondary" (optionSelected)="onMenuOptionSelected($event)" (click)="$event.stopPropagation()">
+      </contextual-menu-button>
+    </div>
+  </div>
+</div>

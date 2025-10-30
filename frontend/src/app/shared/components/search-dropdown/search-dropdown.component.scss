@@ -1,0 +1,77 @@
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+  /* Changed from 50% to 100% */
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
+}
+
+.autocomplete-label {
+  display: block;
+  color: var(--gray-700);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+  margin-bottom: 8px;
+}
+
+.input-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.search-icon img {
+  width: 16px;
+  height: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 8px 8px 8px 36px;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #337ab7;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  border: 1px solid var(--light-gray);
+  background: var(--white);
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 4px;
+  margin-top: 2px;
+  box-shadow: 0 2px 5px var(--light-dark);
+  z-index: 10;
+}
+
+.dropdown li {
+  padding: 8px;
+  font-size: 14px;
+  color: var(--black-secondary);
+  cursor: pointer;
+  list-style: none;
+}
+
+.dropdown li:hover {
+  background-color: var(--white);
+}

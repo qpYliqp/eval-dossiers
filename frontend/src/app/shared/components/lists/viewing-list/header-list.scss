@@ -1,0 +1,86 @@
+.classic-header-list {
+    display: grid;
+    // Cette fonction génère les colonnes automatiquement
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 5px 24px;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--white-smoke);
+    border-bottom: 1.5px solid var(--light-shade);
+  
+    .list-header-item {
+      color:var(--black);
+      font-weight: bold;
+      font-size: 14px;
+      // Empêcher le texte de se wrapper sur plusieurs lignes
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .classic-fixed-header-list {
+    display: grid;
+    // Cette fonction génère les colonnes automatiquement
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 5px 24px;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--white-smoke);
+    border-bottom: 1.5px solid var(--light-shade);
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  
+    .list-header-item {
+      color:var(--black);
+      font-weight: bold;
+      font-size: 14px;
+      // Empêcher le texte de se wrapper sur plusieurs lignes
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+
+  .mapping-header-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // Ajustez le nombre selon vos besoins
+    padding: 5px 24px;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--white-smoke);
+    border-bottom: 1.5px solid var(--light-shade);
+
+    .list-header-item {
+        color: var(--black);
+        font-weight: bold;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+  // Exemple d'un style alternatif pour le header
+.round-header-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 20px 24px;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--white-smoke);
+    border-radius: 10px;
+    color: var(--black);
+
+    .list-header-item {
+      color: var(--slate-grey);
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }

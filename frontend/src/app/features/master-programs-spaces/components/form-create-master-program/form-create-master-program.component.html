@@ -1,0 +1,11 @@
+
+<no-scroll></no-scroll>
+<div class="popup-mode">
+    <dynamic-form
+    [formConfig]="masterFormConfig"
+    [formHeader]="'Créer un espace de master'"
+    (formCancel)="cancelCreation()"
+    (formSubmit)="submitCreation($event)"
+    [formData]="newMaster"
+    ></dynamic-form>
+</div>
